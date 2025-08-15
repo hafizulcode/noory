@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <meta name="theme-color" content="#502274">
+    <meta name="description" content="Free Islamic book library with PDF downloads of authentic Islamic literature">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #502274;
+            --primary-dark: #2d153a;
+            --primary-light: #743bbd;
+            --accent: #ffcb6b;
+            --accent-dark: #ff9800;
+            --success: #329d9c;
+            --error: #e74c3c;
+            --card-bg: #fff;
+            --text-dark: #2d153a;
+            --text-light: #f5f5f5;
+            --bg-gradient: linear-gradient(135deg, #ffe29f 0%, #b7ffea 65%, #b8b5ff 100%);
+            --header-gradient: linear-gradient(90deg, #502274 60%, #743bbd 120%);
+            --radius: 22px;
+            --radius-sm: 12px;
+            --transition: 0.19s cubic-bezier(.46,.03,.52,.96);
+            --shadow: 0 4px 22px rgba(80,34,116,0.13);
+            --shadow-hover: 0 8px 28px rgba(80,34,116,0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html, body {
+            height: 100%;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-gradient);
+            font-family: 'Cairo', 'Montserrat', Arial, sans-serif;
+            color: var(--primary-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--header-gradient);
+            color: #fff;
+            padding: 2.2rem 1rem 1.2rem;
+            text-align: center;
+            width: 100%;
+            border-bottom-left-radius: 36px;
+            border-bottom-right-radius: 36px;
+            box-shadow: var(--shadow);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-family: 'Montserrat', 'Cairo', Arial, sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.1rem);
+            letter-spacing: 1.2px;
+            font-weight: 900;
+            background: linear-gradient(90deg, #ffcb6b 15%, #fffde7 85%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateX(-3px);
+        }
+
+        main {
+            flex: 1 0 auto;
+            padding: 0 1rem;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .search-bar {
+            margin: 1.3rem auto;
+            max-width: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(120deg, #fffde7 60%, #fcf8e8 120%);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 0.5rem 0.8rem;
+            transition: var(--transition);
+        }
+
+        .search-bar:focus-within {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .search-bar input {
+            width: 77%;
+            padding: 1.08rem 1.22rem;
+            font-size: 1.14rem;
+            border: none;
+            border-radius: var(--radius) 0 0 var(--radius);
+            font-family: 'Cairo', Arial, sans-serif;
+            outline: none;
+            background: transparent;
+            color: var(--primary-dark);
+        }
+        
+        .search-bar input::placeholder {
+            color: rgba(80,34,116,0.6);
+        }
+        
+        .search-bar button {
+            width: 30%;
+            background: linear-gradient(90deg, #ff9800 55%, #ffcb6b 100%);
+            color: var(--primary);
+            border: none;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            font-size: 1.13rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 800;
+            cursor: pointer;
+            padding: 1.08rem 0;
+            transition: var(--transition);
+        }
+
+        .search-bar button:hover {
+            background: linear-gradient(90deg, #ffcb6b 40%, #ff9800 120%);
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 0 auto 3.2rem;
+            padding: 0 0.8rem;
+        }
+        
+        .book-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 38px 0 #b8b5ff33;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform var(--transition), box-shadow var(--transition);
+            min-height: 380px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .book-cover {
+            width: 160px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            border: 3px solid var(--success);
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 24px rgba(126,196,207,0.14);
+            transition: var(--transition);
+        }
+        
+        .book-card:hover .book-cover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 28px rgba(126,196,207,0.2);
+        }
+        
+        .book-title {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            text-align: center;
+            font-family: 'Montserrat', 'Cairo', Arial, sans-serif;
+            padding: 0 0.5rem;
+        }
+        
+        .book-author {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 0 0.5rem;
+        }
+        
+        .book-actions {
+            margin-top: auto;
+            display: flex;
+            gap: 1rem;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .book-actions a {
+            text-decoration: none;
+            background: var(--primary);
+            color: #fff;
+            padding: 0.7rem 1.2rem;
+            border-radius: 32px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+            text-align: center;
+            flex: 1;
+            max-width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .book-actions a:hover {
+            background: var(--accent-dark);
+            transform: scale(1.05);
+        }
+
+        .badge-popular {
+            position: absolute;
+            top: 10px;
+            right: -15px;
+            background: linear-gradient(90deg, #00ff42 50%, #a7e9af 100%);
+            color: var(--primary);
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 900;
+            font-size: 0.6rem;
+            padding: 0.3rem 1.5rem;
+            border-radius: 0 0 32px 32px;
+            transform: rotate(11deg);
+            z-index: 3;
+        }
+
+        .badge-new {
+            position: absolute;
+            top: 10px;
+            left: -15px;
+            background: linear-gradient(90deg, #4e54c8 50%, #8f94fb 100%);
+            color: white;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 900;
+            font-size: 0.6rem;
+            padding: 0.3rem 1.5rem;
+            border-radius: 0 0 32px 32px;
+            transform: rotate(-11deg);
+            z-index: 3;
+        }
+
+        
+        
+   
+
+        .no-results {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .no-results-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.7;
+        }
+
+        .reset-btn {
+            padding: 0.7rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reset-btn:hover {
+            background: var(--accent-dark);
+            transform: scale(1.05);
+        }
+
+
+
+        footer {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+            margin-top: 2rem;
+            flex-shrink: 0;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+        }
+
+     
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .to-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #00000022;
+            color: #000000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(80,34,116,0.3);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 100;
+        }
+
+        .to-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .to-top-btn:hover {
+            background: var(--accent-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            max-width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            width: 600px;
+            position: relative;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+            background: none;
+            border: none;
+        }
+
+        .modal-title {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .book-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .book-details-row {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .book-modal-cover {
+            width: 180px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            border: 3px solid var(--success);
+            box-shadow: 0 8px 24px rgba(126,196,207,0.14);
+        }
+
+        .book-info {
+            flex: 1;
+        }
+
+        .book-modal-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        .book-modal-author {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .book-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .book-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            background: rgba(80,34,116,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .modal-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .modal-btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .modal-btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .modal-btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .modal-btn-secondary:hover {
+            background: rgba(80,34,116,0.1);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 800px) {
+            .book-grid { grid-template-columns: 1fr; }
+            header { padding: 1.5rem 0 1rem; }
+            .book-actions { flex-direction: column; align-items: center; }
+            .book-actions a { width: 80%; max-width: none; }
+            .book-details-row { flex-direction: column; }
+            .book-modal-cover { align-self: center; }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.5rem; }
+            .search-bar input, .search-bar button { padding: 0.9rem; }
+            .book-card { min-height: 350px; padding: 1.5rem 0.5rem; }
+            .book-cover { width: 140px; height: 190px; }
+            .book-title { font-size: 1.2rem; }
+            .book-author { font-size: 1rem; }
+            .footer-links { gap: 1rem; }
+            .modal-content { padding: 1.5rem; width: 95%; }
+            .modal-title { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back</span>
+            </a>
+            <h1>Library - PDF Books</h1>
+            <div style="width: 48px;"></div> <!-- Empty div for balance -->
+        </div>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <div class="search-bar" role="search">
+                <input type="text" id="searchInput" placeholder="Search books by title or author..." autocomplete="off" oninput="filterBooks()">
+                <button onclick="filterBooks()">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+            </div>
+            
+     
+        
+        <section class="book-grid" id="bookGrid">
+            <div class="loading" id="loadingIndicator">
+                <div class="spinner"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+           
+            <div class="copyright">
+                &copy; <span id="currentYear"></span> Islamic Art. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <div class="to-top-btn" id="toTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Book Details Modal -->
+    <div class="modal" id="bookModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('bookModal')">&times;</button>
+            <h2 class="modal-title" id="modalBookTitle">Book Title</h2>
+            <div class="book-details">
+                <div class="book-details-row">
+                    <img src="" alt="Book Cover" class="book-modal-cover" id="modalBookCover">
+                    <div class="book-info">
+                        <h3 class="book-modal-title" id="modalBookTitleText"></h3>
+                        <p class="book-modal-author" id="modalBookAuthor"></p>
+                        <div class="book-stats">
+                            <span class="stat-item">
+                                <i class="fas fa-book-open"></i>
+                                <span id="modalBookPages">250 pages</span>
+                            </span>
+                            <span class="stat-item">
+                                <i class="fas fa-file-pdf"></i>
+                                <span id="modalBookSize">5.2 MB</span>
+                            </span>
+                        </div>
+                        <p class="book-description" id="modalBookDescription">
+                            Loading description...
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <a href="#" class="modal-btn modal-btn-primary" id="modalDownloadBtn" target="_blank">
+                        <i class="fas fa-download"></i>
+                        <span>Download PDF</span>
+                    </a>
+                    <button class="modal-btn modal-btn-secondary" onclick="closeModal('bookModal')">
+                        <i class="fas fa-times"></i>
+                        <span>Close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  
+    <!-- Request Book Modal -->
+    <div class="modal" id="requestModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('requestModal')">&times;</button>
+            <h2 class="modal-title">Request a Book</h2>
+            <div class="book-details">
+                <p>Can't find the book you're looking for? Let us know and we'll try to add it to our library!</p>
+                
+                <form id="bookRequestForm" style="margin-top: 1.5rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <label for="bookTitle" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Book Title*</label>
+                        <input type="text" id="bookTitle" required style="width: 100%; padding: 0.8rem; border-radius: var(--radius-sm); border: 1px solid #ddd;">
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <label for="bookAuthor" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Author</label>
+                        <input type="text" id="bookAuthor" style="width: 100%; padding: 0.8rem; border-radius: var(--radius-sm); border: 1px solid #ddd;">
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <label for="bookCategory" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Category</label>
+                        <select id="bookCategory" style="width: 100%; padding: 0.8rem; border-radius: var(--radius-sm); border: 1px solid #ddd;">
+                            <option value="fiqh">Fiqh</option>
+                            <option value="aqeedah">Aqeedah</option>
+                            <option value="seerah">Seerah</option>
+                            <option value="hadith">Hadith</option>
+                            <option value="tazkiyah">Tazkiyah</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="bookNotes" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Additional Notes</label>
+                        <textarea id="bookNotes" rows="4" style="width: 100%; padding: 0.8rem; border-radius: var(--radius-sm); border: 1px solid #ddd;"></textarea>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="submit" class="modal-btn modal-btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Submit Request</span>
+                        </button>
+                        <button type="button" class="modal-btn modal-btn-secondary" onclick="closeModal('requestModal')">
+                            <i class="fas fa-times"></i>
+                            <span>Cancel</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const books = [
+            {
+                title: "দাদা হুজুর (রহঃ) এর ওসিয়ত নামা",
+                author: "হযরত আল্লামা মোঃ রুহুল আমিন (রহঃ)",
+                cover: "https://raw.githubusercontent.com/hafizulcode/hafiz_space/9cb476a431745c8a7c8547b2a69cbcee17b47802/IMG_20250725_160150.png",
+                pdf: "https://ia903200.us.archive.org/6/items/3._20250811/3. দাদা হুজুরের %28রহঃ%29 অছিয়াত নামা  .pdf",
+                
+                
+                
+                pages: 18,
+                size: "3 MB",
+                
+                popular: true
+            }, 
+            
+            
+            
+            
+            
+            
+            
+            
+           
+            {
+                title: "অতি জরুরী মছলা মাসায়েল",
+                author: "হযরত আল্লামা মোঃ রুহুল আমিন (রহঃ)",
+                cover: "https://raw.githubusercontent.com/hafizulcode/hafiz_space/6d89dbfcb0ea9bf77a0a85cb919b547973cb863c/Screenshot_2025-07-30-01-32-24-787_com.companyname.appnew.png",
+                pdf: "https://dn721509.ca.archive.org/0/items/8._20250811/8. অতি জরুরী মছলা মাছায়েল.pdf",
+                
+                pages: 18,
+                size: "2.58 MB",
+                
+                new: true
+            },
+            
+            
+            
+            
+            
+            
+            
+            
+            {
+                title: "ফতোয়ায়ে আশরাফ সিদ্দিকী ১ম খন্ড",
+                author: " মুহাম্মদ MMD আশরাফ আলীমুল্লাহ সিদ্দিকী ",
+                cover: "https://raw.githubusercontent.com/hafizulcode/hafiz_space/9cb476a431745c8a7c8547b2a69cbcee17b47802/IMG_20250725_160933.png",
+                pdf: "https://drive.google.com/file/d/1xHMw034ULEaQ0VEYrDTvFNZy2n-AgISg/view?usp=drivesdk",
+                
+                pages: 465,
+                size: "56.1 MB",
+                    },
+            
+            
+            
+           
+           
+           
+           
+             
+            {
+                title: "২য় খন্ড [ প্রসঙ্গঃ হাত তুলে মুনাজাত ]",
+                author: "মুহাম্মদ MMD আশরাফ আলীমুল্লাহ সিদ্দিকী",
+                cover: "https://www.darussalam.com/media/catalog/product/cache/1/image/500x650/9df78eab33525d08d6e5fb8d27136e95/f/u/fundamentals-of-tawheed.jpg",
+                pdf: "https://drive.google.com/file/d/1xJQwXS7hFlpQd73-EHhzWaVTISgwC8Fj/view?usp=drivesdk",
+                
+                pages: 183,
+                size: "61.5 MB",
+                
+            },
+            
+            
+            
+            
+            
+            
+            
+            
+            
+              
+            {
+                title: "আল্লাহর হক্ব অলি হওয়ার সহজ পথ ও সুন্নতি খেলাফত ক্বায়েমের উপায়",
+                author: "মুহাম্মদ MMD আশরাফ আলীমুল্লাহ সিদ্দিকী ",
+                cover: "https://raw.githubusercontent.com/hafizulcode/hafiz_space/9cb476a431745c8a7c8547b2a69cbcee17b47802/IMG_20250725_160001.png",
+                pdf: "https://drive.google.com/file/d/1xQ2wMnYAPDMWVYQ4hWCV8pkp7zfE1OYv/view?usp=drivesdk",
+                
+                pages: 59,
+                size: "21.3 MB",
+                
+            },
+            
+            
+            
+            
+            
+            
+            
+                  
+            {
+                title: "ইমামের পিছনে সূরা ফাতিহা পড়তে হবে কি না। পবিত্র কুরআন ও সহিহ্ হাদিস",
+                author: "মুহাম্মদ MMD আশরাফ আলীমুল্লাহ সিদ্দিকী ",
+                cover: "https://www.darussalam.com/media/catalog/product/cache/1/image/500x650/9df78eab33525d08d6e5fb8d27136e95/f/u/fundamentals-of-tawheed.jpg",
+                pdf: "https://drive.google.com/file/d/1xPoJRrmXLbXJU1NKjgaEnPKvawXmTUzG/view?usp=drivesdk",
+                
+                pages: 51,
+                size: "17.3 MB",
+                
+            },
+            
+            
+            
+            
+            
+            
+            
+            
+            
+              
+            {
+                title: "ইসলাম ও সঙ্গীত",
+                author: "হযরত আল্লামা রুহুল আমিন (রহঃ) ",
+                cover: "https://www.darussalam.com/media/catalog/product/cache/1/image/500x650/9df78eab33525d08d6e5fb8d27136e95/f/u/fundamentals-of-tawheed.jpg",
+                pdf: "https://drive.google.com/file/d/1xf7L58CAIk3eoB-FDvrA0jMpBs08nHhT/view?usp=drivesdk",
+                
+                pages: 88,
+                size: "7.4 MB",
+                
+            },
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            {
+                title: "ঈদ ও নারী",
+                author: "হযরত আল্লামা রুহুল আমিন (রহঃ) ",
+                cover: "https://www.darussalam.com/media/catalog/product/cache/1/image/500x650/9df78eab33525d08d6e5fb8d27136e95/f/u/fundamentals-of-tawheed.jpg",
+                pdf: "https://ia600903.us.archive.org/3/items/13._20250811_202508/13. ঈদ ও নারী.pdf",
+                
+                pages: 66,
+                size: "6.16 MB",
+                
+            },
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            {
+                title: "ইসলাম ও পর্দা",
+                author: "হযরত আল্লামা রুহুল আমিন (রহঃ) ",
+                cover: "https://www.darussalam.com/media/catalog/product/cache/1/image/500x650/9df78eab33525d08d6e5fb8d27136e95/f/u/fundamentals-of-tawheed.jpg",
+                pdf: "https://drive.google.com/file/d/1yP1YgbBzZ7FalsYKNwaYMs-z81FVQfsK/view?usp=drivesdk",
+                
+                pages: 66,
+                size: "3.78 MB",
+                
+            },
+            
+            
+            
+            
+            
+            
+            
+            
+             
+            {
+                title: " অলিউল্লাহগণের অলৌকিক জীবনী",
+                author: "হযরত আল্লামা রুহুল আমিন (রহঃ) ",
+                cover: "https://www.darussalam.com/media/catalog/product/cache/1/image/500x650/9df78eab33525d08d6e5fb8d27136e95/f/u/fundamentals-of-tawheed.jpg",
+                pdf: "https://drive.google.com/file/d/1yG6mUMdUt01okYIZQkSIzDl7maXhnN6c/view?usp=drivesdk",
+                
+                pages: 77,
+                size: "2.77 MB",
+                
+            },
+            
+            
+            
+            
+            
+            
+            
+              
+            {
+                title: "কেয়ামতের সংবাদ ",
+                author: "হযরত আল্লামা রুহুল আমিন (রহঃ) ",
+                cover: "https://www.darussalam.com/media/catalog/product/cache/1/image/500x650/9df78eab33525d08d6e5fb8d27136e95/f/u/fundamentals-of-tawheed.jpg",
+                pdf: "https://drive.google.com/file/d/1ydxLkzRksmkiFUfBEruQM0EEhf96YmSc/view?usp=drivesdk",
+                
+                pages: 30,
+                size: "7.4 MB",
+                
+            },
+            
+            
+            
+            
+              
+            {
+                title: "অজিফা ও তরিকার পীরগণের শেজরা",
+                author: "হযরত আল্লামা রুহুল আমিন (রহঃ) ",
+                cover: "https://www.darussalam.com/media/catalog/product/cache/1/image/500x650/9df78eab33525d08d6e5fb8d27136e95/f/u/fundamentals-of-tawheed.jpg",
+                pdf: "https://drive.google.com/file/d/1xbKAZYMbetW4-m39ZTe8q5aAEcXDVKeD/view?usp=drivesdk",
+                
+                pages: 24,
+                size: "10.5 MB",
+                
+            },
+            
+            
+            
+            
+            
+            
+            
+            
+               {
+                title: "জবেহ ও কোরবানীর মাছায়েল ",
+                author: "হযরত আল্লামা রুহুল আমিন (রহঃ) ",
+                cover: "https://www.darussalam.com/media/catalog/product/cache/1/image/500x650/9df78eab33525d08d6e5fb8d27136e95/f/u/fundamentals-of-tawheed.jpg",
+                pdf: "https://drive.google.com/file/d/1ylRUh68mrQNzN3ZNSkl1PI5dLLpX37sW/view?usp=drivesdk",
+                
+                pages: 92,
+                size: "5.0 MB",
+                
+            },
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+               {
+                title: "নেকাহ ও জানাজা তত্ত্ব",
+                author: "হযরত আল্লামা রুহুল আমিন (রহঃ) ",
+                cover: "https://www.darussalam.com/media/catalog/product/cache/1/image/500x650/9df78eab33525d08d6e5fb8d27136e95/f/u/fundamentals-of-tawheed.jpg",
+                pdf: "https://ia601701.us.archive.org/1/items/5._20250811_202508/5. নেকাহ ও জানাজা তত্ত্ব.pdf",
+                
+                pages: 41,
+                size: "5.35 MB",
+                
+            },
+            
+            
+            
+              
+            {
+                title: "ক্যালেন্ডার। ১০ ওয়াক্ত নামাজের ক্যালেন্ডার",
+                author: "মুহাম্মদ MMD আশরাফ আলীমুল্লাহ সিদ্দিকী ",
+                cover: "https://www.darussalam.com/media/catalog/product/cache/1/image/500x650/9df78eab33525d08d6e5fb8d27136e95/f/u/fundamentals-of-tawheed.jpg",
+                pdf: "https://drive.google.com/file/d/1xL0r6X2Yjc3HpqdWK6IokO2-kIInx-vw/view?usp=drivesdk",
+                
+                pages: 20,
+                size: "14.4 MB",
+                
+            },
+            
+            
+            
+            
+            
+            
+               {
+                title: "অজিফা ও শাজরা শরীফ (১৪তম খন্ড)",
+                author: "মুহাম্মদ MMD আশরাফ আলীমুল্লাহ সিদ্দিকী ",
+                cover: "https://www.darussalam.com/media/catalog/product/cache/1/image/500x650/9df78eab33525d08d6e5fb8d27136e95/f/u/fundamentals-of-tawheed.jpg",
+                pdf: "https://drive.google.com/file/d/1z-t8cckIzjeFjFSHkhUfUHFMpiQrHI2D/view?usp=drivesdk",
+                
+                pages: 199,
+                size: "41.6 MB",
+                
+            },
+            
+    
+        ];
+
+        const bookGrid = document.getElementById('bookGrid');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const searchInput = document.getElementById('searchInput');
+        const toTopBtn = document.getElementById('toTopBtn');
+        let currentCategory = 'all';
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        function createBookCard(book, idx) {
+            return `
+            <div class="book-card" tabindex="0" onclick="openBookModal(${idx})" data-category="${book.category}">
+                ${book.popular ? '<div class="badge-popular">POPULAR</div>' : ''}
+                ${book.new ? '<div class="badge-new">NEW</div>' : ''}
+                <img class="book-cover" src="${book.cover}" alt="${book.title}" loading="lazy" 
+                     onerror="this.src='https://via.placeholder.com/160x220?text=Book+Cover'">
+                <div class="book-title">${book.title}</div>
+                <div class="book-author">${book.author}</div>
+                <div class="book-actions">
+                    <a href="${book.pdf}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
+                        <i class="fas fa-download"></i>
+                        <span>Download</span>
+                    </a>
+                </div>
+            </div>`;
+        }
+
+        function loadBooks(filteredBooks = books) {
+            loadingIndicator.style.display = 'none';
+            
+            if (filteredBooks.length === 0) {
+                bookGrid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-book-open no-results-icon"></i>
+                        <p style="font-size:1.2rem;color:var(--primary);margin-bottom:1rem;">No books found matching your search.</p>
+                        <button class="reset-btn" onclick="resetSearch()">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Reset Search</span>
+                        </button>
+                    </div>`;
+            } else {
+                bookGrid.innerHTML = filteredBooks.map(createBookCard).join('');
+            }
+        }
+
+        function filterBooks() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            let filtered = books;
+            
+            // Filter by category first
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(book => book.category === currentCategory);
+            }
+            
+            // Then filter by search term if there is one
+            if (searchTerm) {
+                filtered = filtered.filter(book => 
+                    book.title.toLowerCase().includes(searchTerm) ||
+                    book.author.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            loadBooks(filtered);
+        }
+
+        function filterByCategory(category) {
+            currentCategory = category;
+            
+            // Update active state of category buttons
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(category) || 
+                    (category === 'all' && btn.textContent.includes('All'))) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            filterBooks();
+        }
+
+        function resetSearch() {
+            searchInput.value = '';
+            currentCategory = 'all';
+            filterByCategory('all');
+            loadBooks(books);
+            searchInput.focus();
+        }
+
+        function openBookModal(index) {
+            const book = books[index];
+            
+            document.getElementById('modalBookTitle').textContent = book.title;
+            document.getElementById('modalBookTitleText').textContent = book.title;
+            document.getElementById('modalBookAuthor').textContent = `By ${book.author}`;
+            document.getElementById('modalBookCover').src = book.cover;
+            document.getElementById('modalBookCover').alt = book.title;
+            document.getElementById('modalBookPages').textContent = `${book.pages} pages`;
+            document.getElementById('modalBookSize').textContent = book.size;
+            document.getElementById('modalBookDescription').textContent = book.description;
+            document.getElementById('modalDownloadBtn').href = book.pdf;
+            
+            openModal('bookModal');
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openAboutModal() {
+            openModal('aboutModal');
+        }
+
+        function openContactModal() {
+            openModal('contactModal');
+        }
+
+        function openDonateModal() {
+            openModal('donateModal');
+        }
+
+        function openRequestModal() {
+            openModal('requestModal');
+        }
+
+        // Scroll to top button
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                toTopBtn.classList.add('visible');
+            } else {
+                toTopBtn.classList.remove('visible');
+            }
+        });
+
+        toTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Handle book request form submission
+        document.getElementById('bookRequestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your book request! We will review it and add it to our library if appropriate.');
+            closeModal('requestModal');
+            this.reset();
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                loadBooks();
+            }, 800);
+            
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') filterBooks();
+            });
+            
+            // Close modal when clicking outside content
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal(this.id);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

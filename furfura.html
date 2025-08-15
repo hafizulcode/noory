@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furfura Sharif - Spiritual Resources</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+    :root {
+        --abuzar-color: #0003ff;
+        --abbas-color: #ff0034;
+        --junaid-color: #e200e8;
+        --featured-color: #8E2DE2;
+        --abuzar-light: rgba(58, 123, 213, 0.1);
+        --abbas-light: rgba(0, 210, 255, 0.1);
+        --junaid-light: rgba(233, 64, 87, 0.1);
+        --waz-color: #3a7bd5;
+        --hamd-color: #00d2ff;
+        --naat-color: #e94057;
+        --milad-color: #8E2DE2;
+        --white: #ffffff;
+        --light: #f8fafc;
+        --dark: #1e293b;
+        --text: #334155;
+        --section-gap: 48px;
+        --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+        --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+        --shadow-md: 0 6px 18px rgba(0,0,0,0.09);
+        --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+        --transition: all 0.25s cubic-bezier(.4,0,.2,1);
+        --radius: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Poppins', Arial, sans-serif;
+        background: var(--light);
+        color: var(--text);
+        min-height: 100vh;
+        line-height: 1.7;
+    }
+    h1, h2, h3, h4 {
+        font-family: 'Amiri', serif;
+        font-weight: 700;
+        color: var(--dark);
+        letter-spacing: .01em;
+    }
+
+    /* Scroll Down Icon */
+    .scroll-down {
+        position: absolute; bottom: 32px; left: 50%;
+        transform: translateX(-50%);
+        color: #fff; font-size: 2.2rem; animation: bounce 2s infinite;
+        cursor: pointer; z-index: 10;
+        opacity: 0.92;
+        transition: var(--transition);
+    }
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%);}
+        40% { transform: translateY(-18px) translateX(-50%);}
+        60% { transform: translateY(-9px) translateX(-50%);}
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed; bottom: 28px; right: 28px; width: 52px; height: 52px;
+        background: #ffffff39;
+        color: #000000; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        font-size: 1.7rem; box-shadow: var(--shadow-lg); cursor: pointer;
+        opacity: 0; visibility: hidden; transition: var(--transition); z-index: 90;
+    }
+    .back-to-top.visible { opacity: 1; visibility: visible;}
+    .back-to-top:hover {
+        background: linear-gradient(135deg,var(--abbas-color),var(--abuzar-color));
+        transform: translateY(-5px) scale(1.08);
+    }
+
+    /* Header Section */
+    .header {
+        position: relative;
+        background: linear-gradient(135deg,rgba(58, 123, 213, 0.93),rgba(0, 210, 255, 0.89)),
+            url('https://raw.githubusercontent.com/hafizulcode/hafiz_space/684836f501daca2998c0ff5803b12872605a12ae/Pic.%20%E0%A6%A6%E0%A6%BE%E0%A6%A6%E0%A6%BE%20%E0%A6%B9%E0%A7%81%E0%A6%9C%E0%A7%81%E0%A6%B0%E0%A7%87%E0%A6%B0%20%E0%A6%AE%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0.png') center/cover;
+        min-height: 98vh;
+        display: flex; align-items: center; justify-content: center; text-align: center;
+        color: #fff;
+        padding: 24px;
+        box-shadow: 0 6px 28px rgba(58, 123, 213, 0.15);
+    }
+    .header-content { z-index: 2; }
+    .logo {
+        width: 145px; height: 145px; margin: 0 auto 14px auto;
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        background: rgba(255,255,255,0.13); backdrop-filter: blur(4px);
+        border: 3.5px solid #fff;
+        box-shadow: 0 12px 36px rgba(0,0,0,0.17);
+    }
+    .logo img { 
+        width: 98px; height: 98px; 
+        border-radius: 50%; 
+        object-fit: cover; 
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    }
+
+    .header h1 { 
+        margin-top: 16px; 
+        font-size: 2.4rem; 
+        letter-spacing: 0.02em; 
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .header p { 
+        font-size: 1.08rem; 
+        opacity: .94; 
+        margin-top: 7px; 
+        font-weight: 400; 
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Main Content */
+    .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 48px 18px 0 18px;
+    }
+
+    /* Speaker Selection Tabs */
+    .speaker-tabs {
+        display: flex;
+        background: #80ffff86;
+        border-radius: var(--radius);
+        padding: 6px;
+        box-shadow: var(--shadow-xs);
+        margin-bottom: 32px;
+        gap: 10px;
+    }
+    .speaker-tab {
+        flex: 1; padding: 13px 8px;
+        border-radius: 8.5px;
+        font-weight: 600; cursor: pointer;
+        transition: var(--transition);
+        text-align: center; color: #555;
+        display: flex; flex-direction: column; align-items: center; gap: 7px;
+        border: none; background: transparent;
+        font-size: 1.04rem;
+    }
+    .speaker-tab.active {
+        background: #fff; color: var(--dark);
+        box-shadow: var(--shadow-sm);
+    }
+    .speaker-tab .speaker-img {
+        width: 56px; height: 56px; border-radius: 50%; object-fit: cover;
+        border: 2px solid #fff; box-shadow: var(--shadow-xs);
+        transition: var(--transition);
+    }
+    .speaker-tab.active[data-speaker="abuzar"] { 
+        background: var(--abuzar-light);
+        box-shadow: 0 0 0 1px var(--abuzar-color);
+    }
+    .speaker-tab.active[data-speaker="abbas"] { 
+        background: var(--abbas-light);
+        box-shadow: 0 0 0 1px var(--abbas-color);
+    }
+    .speaker-tab.active[data-speaker="junaid"] { 
+        background: var(--junaid-light);
+        box-shadow: 0 0 0 1px var(--junaid-color);
+    }
+    .speaker-tab[data-speaker="abuzar"] { color: var(--abuzar-color);}
+    .speaker-tab[data-speaker="abbas"] { color: var(--abbas-color);}
+    .speaker-tab[data-speaker="junaid"] { color: var(--junaid-color);}
+    .speaker-tab:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Content Section */
+    .content-section {
+        display: none;
+        background: #fff;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-md);
+        overflow: hidden;
+        margin-bottom: var(--section-gap);
+        animation: fadeIn .6s cubic-bezier(.4,0,.2,1);
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+    .content-section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: none; } }
+
+    /* Section Header */
+    .section-header {
+        padding: 29px 25px 20px 25px;
+        display: flex; align-items: center; gap: 18px;
+        border-bottom: 1px solid rgba(0,0,0,0.055);
+        position: relative;
+        background: #1100ff20;
+    }
+    .section-header::after {
+        content: '';
+        position: absolute; bottom: -1px; left: 0;
+        width: 100%; height: 3px;
+        background: linear-gradient(90deg,var(--abuzar-color),var(--abbas-color),var(--junaid-color));
+        opacity: 0.11;
+    }
+    .section-header .huzur-img {
+        width: 74px; height: 74px; border-radius: 50%; object-fit: cover;
+        border: 3px solid #fff; box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+    }
+    .section-header .huzur-img:hover { 
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .section-header-content { flex: 1;}
+
+    .section-header h2 { 
+        margin-bottom: 3px; 
+        font-size: 1.35rem;
+        color: var(--dark);
+    }
+    .section-header p { 
+        font-size: 0.97rem; 
+        color: #64748b; 
+    }
+
+    /* Media Type Tabs */
+    .media-type-tabs {
+        display: flex;
+        margin: 0 25px;
+        background: #11ff005e;
+        border-radius: 8px;
+        padding: 5px;
+        box-shadow: var(--shadow-xs);
+        gap: 10px;
+    }
+    .media-type-tab {
+        flex: 1; padding: 14px 0;
+        border-radius: 99px; font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: .99rem; text-align: center; color: #666;
+        border: none; background: transparent;
+        display: flex; align-items: center; justify-content: center; gap: 7px;
+    }
+    .media-type-tab.active {
+        background: #fff; font-weight: 600;
+        color: var(--dark); box-shadow: var(--shadow-xs);
+    }
+    .media-type-tab i { margin-right: 5px; }
+    .media-type-tab:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Category Tabs */
+    .category-tabs {
+        display: flex; flex-wrap: wrap; gap: 11px;
+        padding: 21px 25px 11px 25px;
+        border-bottom: 1px solid rgba(0,0,0,0.04);
+        background: #fcfdfe;
+    }
+    .category-tab {
+        padding: 10px 22px;
+        border-radius: 50px;
+        font-weight: 600; cursor: pointer;
+        transition: var(--transition);
+        display: flex; align-items: center; gap: 8px;
+        border: none; font-size: .97rem; background: transparent;
+    }
+    .category-tab[data-category="waz"] { 
+        background: var(--abuzar-light); 
+        color: var(--waz-color); 
+        border: 1px solid var(--waz-color);
+    }
+    .category-tab[data-category="hamd"] { 
+        background: var(--abbas-light); 
+        color: var(--hamd-color); 
+        border: 1px solid var(--hamd-color);
+    }
+    .category-tab[data-category="naat"] { 
+        background: var(--junaid-light); 
+        color: var(--naat-color); 
+        border: 1px solid var(--naat-color);
+    }
+    .category-tab[data-category="milad"] { 
+        background: rgba(142, 45, 226, 0.09); 
+        color: var(--milad-color); 
+        border: 1px solid var(--milad-color);
+    }
+    .category-tab.active {
+        color: #fff; transform: translateY(-2px); box-shadow: var(--shadow-sm);
+    }
+    .category-tab[data-category="waz"].active { 
+        background: var(--waz-color);
+        box-shadow: 0 4px 12px rgba(58, 123, 213, 0.2);
+    }
+    .category-tab[data-category="hamd"].active { 
+        background: var(--hamd-color);
+        box-shadow: 0 4px 12px rgba(0, 210, 255, 0.2);
+    }
+    .category-tab[data-category="naat"].active { 
+        background: var(--naat-color);
+        box-shadow: 0 4px 12px rgba(233, 64, 87, 0.2);
+    }
+    .category-tab[data-category="milad"].active { 
+        background: var(--milad-color);
+        box-shadow: 0 4px 12px rgba(142, 45, 226, 0.2);
+    }
+    .category-tab[data-category="all"] {
+        background: #f1f5f9; 
+        color: #64748b; 
+        border: 1px solid #e2e8f0;
+    }
+    .category-tab:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Media Grid */
+    .media-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 22px;
+        padding: 26px 25px 16px 25px;
+        background: #fff;
+    }
+    .media-item {
+        background: #f9fafd;
+        border-radius: 13px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        border-left: 4px solid transparent;
+        display: flex; flex-direction: column; height: 100%;
+        min-width: 0;
+        position: relative;
+    }
+    .media-item:hover { 
+        transform: translateY(-4px) scale(1.01); 
+        box-shadow: var(--shadow-md);
+    }
+    .media-item[data-category="waz"] { 
+        border-left-color: var(--waz-color);
+        box-shadow: 0 2px 8px rgba(58, 123, 213, 0.1);
+    }
+    .media-item[data-category="hamd"] { 
+        border-left-color: var(--hamd-color);
+        box-shadow: 0 2px 8px rgba(0, 210, 255, 0.1);
+    }
+    .media-item[data-category="naat"] { 
+        border-left-color: var(--naat-color);
+        box-shadow: 0 2px 8px rgba(233, 64, 87, 0.1);
+    }
+    .media-item[data-category="milad"] { 
+        border-left-color: var(--milad-color);
+        box-shadow: 0 2px 8px rgba(142, 45, 226, 0.1);
+    }
+    .media-header {
+        padding: 15px 14px 9px 14px; position: relative;
+    }
+    .media-icon {
+        width: 40px; height: 40px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.25rem; margin-bottom: 9px;
+        background: #f1f1f7;
+    }
+    .media-item[data-category="waz"] .media-icon { 
+        background: var(--abuzar-light); 
+        color: var(--waz-color);
+    }
+    .media-item[data-category="hamd"] .media-icon { 
+        background: var(--abbas-light); 
+        color: var(--hamd-color);
+    }
+    .media-item[data-category="naat"] .media-icon { 
+        background: var(--junaid-light); 
+        color: var(--naat-color);
+    }
+    .media-item[data-category="milad"] .media-icon { 
+        background: rgba(142, 45, 226, 0.09); 
+        color: var(--milad-color);
+    }
+    .media-title { 
+        font-weight: 600; 
+        margin-bottom: 7px; 
+        font-size: 1.04rem;
+        color: var(--dark);
+    }
+    .media-date { 
+        font-size: .85rem; 
+        color: #64748b; 
+        display: flex; 
+        align-items: center; 
+        gap: 5px;
+    }
+    .media-category {
+        position: absolute; top: 15px; right: 15px;
+        padding: 3px 10px; border-radius: 13px; font-size: .73rem;
+        font-weight: 600; text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .media-item[data-category="waz"] .media-category { 
+        background: var(--abuzar-light); 
+        color: var(--waz-color);
+    }
+    .media-item[data-category="hamd"] .media-category { 
+        background: var(--abbas-light); 
+        color: var(--hamd-color);
+    }
+    .media-item[data-category="naat"] .media-category { 
+        background: var(--junaid-light); 
+        color: var(--naat-color);
+    }
+    .media-item[data-category="milad"] .media-category { 
+        background: rgba(142, 45, 226, 0.09); 
+        color: var(--milad-color);
+    }
+    .media-player { padding: 0 14px 15px 14px;}
+
+    /* Audio Player */
+    audio {
+        width: 100%;
+        height: 46px;
+        background: #f2f5f7;
+        border-radius: 7px;
+        border: 1px solid #e2e8f0;
+    }
+    audio::-webkit-media-controls-panel {
+        background: #f8fafc;
+    }
+    audio::-webkit-media-controls-timeline { height: 7px;}
+    audio::-webkit-media-controls-timeline::-webkit-slider-thumb { width: 16px; height: 16px;}
+
+    /* Video Player */
+    .video-container {
+        position: relative; width: 100%; background: #000;
+        border-radius: 8px; overflow: hidden; margin-bottom: 12px; box-shadow: var(--shadow-sm);
+        aspect-ratio: 16/9; min-height: 158px;
+    }
+    .video-logo {
+        position: absolute; top: 10px; left: 10px; width: 38px; height: 38px; z-index: 10;
+        background: rgba(255,255,255,0.13); backdrop-filter: blur(3.5px);
+        padding: 4px; border-radius: 6px;
+    }
+    .video-logo img { 
+        width: 100%; height: 100%; 
+        object-fit: contain; 
+        border-radius: 4px;
+    }
+    .video-container iframe, .video-container video {
+        width: 100%; height: 100%; border: none; border-radius: 0 0 8px 8px;
+        background: #000;
+    }
+
+    /* Pagination */
+    .pagination {
+        display: flex; justify-content: center; gap: 9px;
+        padding: 19px 0 11px 0;
+        border-top: 1px solid rgba(0,0,0,0.055);
+    }
+    .page-btn {
+        width: 34px; height: 34px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        background: #fff; border: 1px solid #e2e8f0;
+        cursor: pointer; transition: var(--transition); font-size: 1.07rem;
+        color: #555;
+    }
+    .page-btn:hover { 
+        background: #f1f5f9;
+        transform: translateY(-2px);
+    }
+    .page-btn.active { 
+        background: var(--abuzar-color); 
+        color: #fff; 
+        border-color: var(--abuzar-color);
+        box-shadow: 0 4px 8px rgba(58, 123, 213, 0.2);
+    }
+
+    /* Featured Section */
+    .featured-section {
+        background: linear-gradient(135deg,var(--featured-color),#4A00E0);
+        color: #fff;
+        padding: 60px 20px 50px 20px;
+        text-align: center;
+        margin-top: var(--section-gap);
+        border-radius: var(--radius);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+    }
+    .featured-section::before {
+        content: '';
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background: url('https://raw.githubusercontent.com/hafizulcode/hafiz_space/684836f501daca2998c0ff5803b12872605a12ae/Pic.%20%E0%A6%A6%E0%A6%BE%E0%A6%A6%E0%A6%BE%20%E0%A6%B9%E0%A7%81%E0%A6%9C%E0%A7%81%E0%A6%B0%E0%A7%87%E0%A6%B0%20%E0%A6%AE%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0.png') center/cover;
+        opacity: 0.11; z-index: 0;
+    }
+    .featured-section h2,.featured-section p { 
+        position: relative; 
+        z-index: 1;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .featured-section h2 { 
+        font-size: 1.5rem; 
+        margin-bottom: 9px;
+    }
+    .featured-section p { 
+        font-size: 1.05rem; 
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    /* Footer */
+    .footer {
+        background: #1e293b;
+        color: #fff;
+        padding: 50px 18px 39px 18px;
+        text-align: center;
+        margin-top: var(--section-gap);
+        position: relative;
+        font-family: 'Poppins',Arial,sans-serif;
+        border-radius: var(--radius) var(--radius) 0 0;
+        box-shadow: 0 -2px 16px rgba(30, 41, 59, 0.15);
+    }
+    .footer::before {
+        content: '';
+        position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+        background: linear-gradient(90deg,var(--abuzar-color),var(--abbas-color),var(--junaid-color));
+        border-radius: 5px 5px 0 0;
+    }
+    .footer-content h3 { 
+        margin-bottom: 6px; 
+        font-size: 1.3rem;
+    }
+    .footer-content p { 
+        margin-bottom: 8px; 
+        font-size: 1rem;
+        color: #cbd5e1;
+    }
+    .social-links {
+        display: flex; justify-content: center; gap: 23px; margin: 18px 0;
+    }
+    .social-links a {
+        color: #fff; font-size: 1.5rem; transition: var(--transition);
+        opacity: .92;
+    }
+    .social-links a:hover { 
+        transform: translateY(-5px) scale(1.1); 
+        color: var(--abuzar-color);
+        text-shadow: 0 2px 8px rgba(58, 123, 213, 0.3);
+    }
+    .footer-content { position: relative; z-index: 1;}
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .main-content { padding: 38px 7px 0 7px;}
+    }
+    @media (max-width: 768px) {
+        .media-grid { grid-template-columns: 1fr;}
+        .category-tabs { justify-content: center;}
+        .section-header { flex-direction: column; text-align: center; gap: 13px; }
+        .section-header .huzur-img { margin-bottom: 13px;}
+        .media-type-tabs, .speaker-tabs { flex-direction: column;}
+        .speaker-tab { flex-direction: row; justify-content: flex-start; padding: 12px 12px;}
+        .main-content { padding: 27px 3vw 0 3vw;}
+        .featured-section { padding: 38px 11px;}
+    }
+    @media (max-width: 480px) {
+        .header h1 { font-size: 1.8rem;}
+        .section-header { padding: 17px 8px 13px 8px;}
+        .media-grid { padding: 13px 7px 10px 7px;}
+        .category-tabs, .media-type-tabs { margin-left: 0; margin-right: 0; padding-left: 6px; padding-right: 6px;}
+        .featured-section { padding: 28px 2vw;}
+        .category-tab { padding: 8px 16px; font-size: 0.9rem;}
+    }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/hafizulcode/hafiz_space/684836f501daca2998c0ff5803b12872605a12ae/Pic.%20%E0%A6%A6%E0%A6%BE%E0%A6%A6%E0%A6%BE%20%E0%A6%B9%E0%A7%81%E0%A6%9C%E0%A7%81%E0%A6%B0%E0%A7%87%E0%A6%B0%20%E0%A6%AE%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0.png" alt="Furfura Sharif Logo" loading="lazy">
+            </div>
+            <h1>Furfura Sharif</h1>
+            <p>Spiritual Resources from Our Beloved Huzurs</p>
+        </div>
+        <div class="scroll-down" onclick="scrollToContent()">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+    <!-- Back to Top Button -->
+    <div class="back-to-top" onclick="scrollToTop()" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <!-- Speaker Selection Tabs -->
+        <div class="speaker-tabs" role="tablist">
+            <button class="speaker-tab active" data-speaker="abuzar" role="tab" aria-selected="true" aria-controls="abuzar-section" tabindex="0">
+                <img src="https://via.placeholder.com/150" alt="Abuzar Siddique" class="speaker-img" loading="lazy">
+                <span>1. Abuzar Siddique</span>
+            </button>
+            <button class="speaker-tab" data-speaker="abbas" role="tab" aria-selected="false" aria-controls="abbas-section" tabindex="0">
+                <img src="https://via.placeholder.com/150" alt="Abbas Siddique" class="speaker-img" loading="lazy">
+                <span>2. Abbas Siddique</span>
+            </button>
+            <button class="speaker-tab" data-speaker="junaid" role="tab" aria-selected="false" aria-controls="junaid-section" tabindex="0">
+                <img src="https://via.placeholder.com/150" alt="Junaid Siddique" class="speaker-img" loading="lazy">
+                <span>3. Junaid Siddique</span>
+            </button>
+        </div>
+        <!-- Abuzar Siddique Section -->
+        <section class="content-section abuzar-section active" id="abuzar-section" aria-labelledby="abuzar-tab">
+            <div class="section-header">
+                <img src="https://via.placeholder.com/150" alt="Abuzar Siddique" class="huzur-img" loading="lazy">
+                <div class="section-header-content">
+                    <h2>1. Abuzar Siddique</h2>
+                    <p>Spiritual lectures and guidance</p>
+                </div>
+            </div>
+            <div class="media-type-tabs" role="tablist">
+                <button class="media-type-tab active" data-huzur="abuzar" data-type="audio" role="tab" aria-selected="true"><i class="fas fa-music"></i> Audio</button>
+                <button class="media-type-tab" data-huzur="abuzar" data-type="video" role="tab" aria-selected="false"><i class="fas fa-video"></i> Video</button>
+            </div>
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all" data-huzur="abuzar"><i class="fas fa-star"></i> All</button>
+                <button class="category-tab" data-category="waz" data-huzur="abuzar"><i class="fas fa-microphone-alt"></i> Waz</button>
+                <button class="category-tab" data-category="hamd" data-huzur="abuzar"><i class="fas fa-hands-praying"></i> Hamd</button>
+                <button class="category-tab" data-category="naat" data-huzur="abuzar"><i class="fas fa-music"></i> Naat</button>
+                <button class="category-tab" data-category="milad" data-huzur="abuzar"><i class="fas fa-mosque"></i> Milad</button>
+            </div>
+            <div class="media-grid" id="abuzar-grid"></div>
+            <nav class="pagination" id="abuzar-pagination" aria-label="Abuzar Siddique Pagination"></nav>
+        </section>
+        <!-- Abbas Siddique Section -->
+        <section class="content-section abbas-section" id="abbas-section" aria-labelledby="abbas-tab">
+            <div class="section-header">
+                <img src="https://via.placeholder.com/150" alt="Abbas Siddique" class="huzur-img" loading="lazy">
+                <div class="section-header-content">
+                    <h2>2. Abbas Siddique</h2>
+                    <p>Islamic teachings and sermons</p>
+                </div>
+            </div>
+            <div class="media-type-tabs" role="tablist">
+                <button class="media-type-tab active" data-huzur="abbas" data-type="audio" role="tab" aria-selected="true"><i class="fas fa-music"></i> Audio</button>
+                <button class="media-type-tab" data-huzur="abbas" data-type="video" role="tab" aria-selected="false"><i class="fas fa-video"></i> Video</button>
+            </div>
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all" data-huzur="abbas"><i class="fas fa-star"></i> All</button>
+                <button class="category-tab" data-category="waz" data-huzur="abbas"><i class="fas fa-microphone-alt"></i> Waz</button>
+                <button class="category-tab" data-category="hamd" data-huzur="abbas"><i class="fas fa-hands-praying"></i> Hamd</button>
+                <button class="category-tab" data-category="naat" data-huzur="abbas"><i class="fas fa-music"></i> Naat</button>
+                <button class="category-tab" data-category="milad" data-huzur="abbas"><i class="fas fa-mosque"></i> Milad</button>
+            </div>
+            <div class="media-grid" id="abbas-grid"></div>
+            <nav class="pagination" id="abbas-pagination" aria-label="Abbas Siddique Pagination"></nav>
+        </section>
+        <!-- Junaid Siddique Section -->
+        <section class="content-section junaid-section" id="junaid-section" aria-labelledby="junaid-tab">
+            <div class="section-header">
+                <img src="https://via.placeholder.com/150" alt="Junaid Siddique" class="huzur-img" loading="lazy">
+                <div class="section-header-content">
+                    <h2>3. Junaid Siddique</h2>
+                    <p>Spiritual discourses and guidance</p>
+                </div>
+            </div>
+            <div class="media-type-tabs" role="tablist">
+                <button class="media-type-tab active" data-huzur="junaid" data-type="audio" role="tab" aria-selected="true"><i class="fas fa-music"></i> Audio</button>
+                <button class="media-type-tab" data-huzur="junaid" data-type="video" role="tab" aria-selected="false"><i class="fas fa-video"></i> Video</button>
+            </div>
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all" data-huzur="junaid"><i class="fas fa-star"></i> All</button>
+                <button class="category-tab" data-category="waz" data-huzur="junaid"><i class="fas fa-microphone-alt"></i> Waz</button>
+                <button class="category-tab" data-category="hamd" data-huzur="junaid"><i class="fas fa-hands-praying"></i> Hamd</button>
+                <button class="category-tab" data-category="naat" data-huzur="junaid"><i class="fas fa-music"></i> Naat</button>
+                <button class="category-tab" data-category="milad" data-huzur="junaid"><i class="fas fa-mosque"></i> Milad</button>
+            </div>
+            <div class="media-grid" id="junaid-grid"></div>
+            <nav class="pagination" id="junaid-pagination" aria-label="Junaid Siddique Pagination"></nav>
+        </section>
+        <!-- Featured Section -->
+        <section class="featured-section">
+            <h2><i class="fas fa-calendar-star"></i> Upcoming Events</h2>
+            <p>Join us for our special spiritual gatherings and events throughout the year.</p>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+        
+            <p>&copy; 2025 Islamic Art. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+    // Sample data for media content
+    const mediaData = {
+        abuzar: {
+            audio: [
+                {title: "Friday Waz - Spiritual Guidance", date: "May 2025 • 45m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", category: "waz", icon: "fas fa-microphone-alt"},
+                {title: "Beautiful Hamd Collection", date: "April 2025 • 30m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", category: "hamd", icon: "fas fa-hands-praying"},
+                {title: "Special Milad Program", date: "March 2025 • 60m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", category: "milad", icon: "fas fa-mosque"},
+                {title: "Naat Sharif - Voice of the Heart", date: "February 2025 • 25m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", category: "naat", icon: "fas fa-music"},
+                {title: "Weekly Islamic Teachings", date: "January 2025 • 50m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", category: "waz", icon: "fas fa-microphone-alt"},
+                {title: "Hamd-e-Bari Taala", date: "December 2024 • 20m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", category: "hamd", icon: "fas fa-hands-praying"},
+                {title: "Naat Collection Vol. 2", date: "November 2024 • 35m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", category: "naat", icon: "fas fa-music"},
+                {title: "Eid Milad-un-Nabi Special", date: "October 2024 • 75m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", category: "milad", icon: "fas fa-mosque"}
+            ],
+            video: [
+                {title: "Friday Waz - Video Lecture", date: "May 2025 • 45m", src: "https://www.youtube.com/embed/dQw4w9WgXcQ", category: "waz", icon: "fas fa-video"},
+                {title: "Hamd Performance Live", date: "April 2025 • 30m", src: "https://www.youtube.com/embed/dQw4w9WgXcQ", category: "hamd", icon: "fas fa-video"},
+                {title: "Milad Ceremony Recording", date: "March 2025 • 60m", src: "https://www.youtube.com/embed/dQw4w9WgXcQ", category: "milad", icon: "fas fa-video"},
+                {title: "Naat Performance", date: "February 2025 • 25m", src: "https://www.youtube.com/embed/dQw4w9WgXcQ", category: "naat", icon: "fas fa-video"}
+            ]
+        },
+        abbas: {
+            audio: [
+                {title: "Weekly Waz - Islamic Teachings", date: "May 2025 • 50m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", category: "waz", icon: "fas fa-microphone-alt"},
+                {title: "Hamd-e-Bari Taala", date: "April 2025 • 20m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3", category: "hamd", icon: "fas fa-hands-praying"},
+                {title: "Naat Collection Vol. 1", date: "March 2025 • 35m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3", category: "naat", icon: "fas fa-music"},
+                {title: "Milad-un-Nabi Special", date: "February 2025 • 75m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3", category: "milad", icon: "fas fa-mosque"},
+                {title: "Friday Khutbah", date: "January 2025 • 45m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", category: "waz", icon: "fas fa-microphone-alt"},
+                {title: "Praise of the Prophet", date: "December 2024 • 30m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", category: "hamd", icon: "fas fa-hands-praying"},
+                {title: "Beautiful Naat Selection", date: "November 2024 • 25m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3", category: "naat", icon: "fas fa-music"},
+                {title: "Annual Milad Program", date: "October 2024 • 90m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3", category: "milad", icon: "fas fa-mosque"}
+            ],
+            video: [
+                {title: "Islamic Lecture Series", date: "May 2025 • 50m", src: "https://www.youtube.com/embed/dQw4w9WgXcQ", category: "waz", icon: "fas fa-video"},
+                {title: "Hamd Performance", date: "April 2025 • 20m", src: "https://www.youtube.com/embed/dQw4w9WgXcQ", category: "hamd", icon: "fas fa-video"},
+                {title: "Naat Recitation", date: "March 2025 • 35m", src: "https://www.youtube.com/embed/dQw4w9WgXcQ", category: "naat", icon: "fas fa-video"},
+                {title: "Milad Celebration", date: "February 2025 • 75m", src: "https://www.youtube.com/embed/dQw4w9WgXcQ", category: "milad", icon: "fas fa-video"}
+            ]
+        },
+        junaid: {
+            audio: [
+                {title: "Powerful Waz on Faith", date: "May 2025 • 55m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3", category: "waz", icon: "fas fa-microphone-alt"},
+                {title: "Hamd Collection - Praise of Allah", date: "April 2025 • 40m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3", category: "hamd", icon: "fas fa-hands-praying"},
+                {title: "Beautiful Naat Selection", date: "March 2025 • 30m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3", category: "naat", icon: "fas fa-music"},
+                {title: "Annual Milad Program", date: "February 2025 • 90m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3", category: "milad", icon: "fas fa-mosque"},
+                {title: "Islamic Guidance Series", date: "January 2025 • 50m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", category: "waz", icon: "fas fa-microphone-alt"},
+                {title: "Divine Praise Collection", date: "December 2024 • 35m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", category: "hamd", icon: "fas fa-hands-praying"},
+                {title: "Naat-e-Rasool", date: "November 2024 • 30m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", category: "naat", icon: "fas fa-music"},
+                {title: "Special Milad Gathering", date: "October 2024 • 80m", src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", category: "milad", icon: "fas fa-mosque"}
+            ],
+            video: [
+                {title: "Faith and Spirituality Talk", date: "May 2025 • 55m", src: "https://www.youtube.com/embed/dQw4w9WgXcQ", category: "waz", icon: "fas fa-video"},
+                {title: "Hamd Performance Live", date: "April 2025 • 40m", src: "https://www.youtube.com/embed/dQw4w9WgXcQ", category: "hamd", icon: "fas fa-video"},
+                {title: "Naat Recitation", date: "March 2025 • 30m", src: "https://www.youtube.com/embed/dQw4w9WgXcQ", category: "naat", icon: "fas fa-video"},
+                {title: "Milad Celebration", date: "February 2025 • 90m", src: "https://www.youtube.com/embed/dQw4w9WgXcQ", category: "milad", icon: "fas fa-video"}
+            ]
+        }
+    };
+
+    // Pagination variables
+    const itemsPerPage = 6;
+    const currentPages = { abuzar: 1, abbas: 1, junaid: 1 };
+    const currentCategories = { abuzar: "all", abbas: "all", junaid: "all" };
+    const currentMediaTypes = { abuzar: "audio", abbas: "audio", junaid: "audio" };
+
+    // Track currently playing media
+    let currentlyPlaying = null;
+
+    // Create media item HTML
+    const createMediaItem = (item, mediaType) => {
+        if (mediaType === 'audio') {
+            return `
+                <div class="media-item" data-category="${item.category}">
+                    <div class="media-header">
+                        <div class="media-icon"><i class="${item.icon}"></i></div>
+                        <h3 class="media-title">${item.title}</h3>
+                        <div class="media-date"><i class="far fa-calendar-alt"></i> ${item.date}</div>
+                        <span class="media-category">${item.category}</span>
+                    </div>
+                    <div class="media-player">
+                        <audio controls controlsList="nodownload" onplay="handleMediaPlay(this)">
+                            <source src="${item.src}" type="audio/mp3">
+                        </audio>
+                    </div>
+                </div>
+            `;
+        } else {
+            return `
+                <div class="media-item" data-category="${item.category}">
+                    <div class="media-header">
+                        <div class="media-icon"><i class="${item.icon}"></i></div>
+                        <h3 class="media-title">${item.title}</h3>
+                        <div class="media-date"><i class="far fa-calendar-alt"></i> ${item.date}</div>
+                        <span class="media-category">${item.category}</span>
+                    </div>
+                    <div class="media-player">
+                        <div class="video-container">
+                            <div class="video-logo">
+                                <img src="https://raw.githubusercontent.com/hafizulcode/hafiz_space/684836f501daca2998c0ff5803b12872605a12ae/Pic.%20%E0%A6%A6%E0%A6%BE%E0%A6%A6%E0%A6%BE%20%E0%A6%B9%E0%A7%81%E0%A6%9C%E0%A7%81%E0%A6%B0%E0%A7%87%E0%A6%B0%20%E0%A6%AE%E0%A6%BE%E0%A6%9C%E0%A6%BE%E0%A6%B0.png" alt="Furfura Sharif Logo">
+                            </div>
+                            <iframe src="${item.src}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="${item.title}" onplay="handleMediaPlay(this)"></iframe>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+    };
+
+    // Handle media play event
+    function handleMediaPlay(element) {
+        if (currentlyPlaying && currentlyPlaying !== element) {
+            // Pause previously playing media
+            if (currentlyPlaying.tagName === 'AUDIO') {
+                currentlyPlaying.pause();
+            } else if (currentlyPlaying.tagName === 'IFRAME') {
+                // For iframes, we can't directly control them due to cross-origin restrictions
+                // So we'll just track which one is playing
+                console.log("Cannot programmatically pause YouTube videos due to security restrictions");
+            }
+        }
+        currentlyPlaying = element;
+    }
+
+    // Load content for a huzur
+    const loadHuzurContent = (huzur, category = 'all', page = 1, mediaType = 'audio') => {
+        const grid = document.getElementById(`${huzur}-grid`);
+        const pagination = document.getElementById(`${huzur}-pagination`);
+        let content = mediaData[huzur][mediaType];
+        if (category !== 'all') content = content.filter(item => item.category === category);
+        const totalPages = Math.ceil(content.length / itemsPerPage);
+        const startIndex = (page - 1) * itemsPerPage;
+        const paginatedContent = content.slice(startIndex, startIndex + itemsPerPage);
+        grid.innerHTML = paginatedContent.map(item => createMediaItem(item, mediaType)).join('');
+        pagination.innerHTML = '';
+        for (let i = 1; i <= totalPages; i++) {
+            const button = document.createElement('button');
+            button.className = `page-btn${i === page ? ' active' : ''}`;
+            button.textContent = i;
+            button.dataset.page = i;
+            button.setAttribute('aria-label', "Go to page " + i);
+            button.addEventListener('click', () => {
+                currentPages[huzur] = i;
+                loadHuzurContent(huzur, currentCategories[huzur], i, currentMediaTypes[huzur]);
+            });
+            pagination.appendChild(button);
+        }
+    };
+
+    function scrollToContent() {
+        document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
+    }
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.addEventListener('scroll', function() {
+        const backToTopButton = document.querySelector('.back-to-top');
+        if (window.pageYOffset > 290) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Load initial content for all huzurs
+        loadHuzurContent('abuzar');
+        loadHuzurContent('abbas');
+        loadHuzurContent('junaid');
+
+        // Speaker tab switching
+        document.querySelectorAll('.speaker-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const speaker = this.dataset.speaker;
+                document.querySelectorAll('.speaker-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.speaker-tab').forEach(t => t.setAttribute("aria-selected","false"));
+                this.classList.add('active');
+                this.setAttribute("aria-selected","true");
+                document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+                document.getElementById(`${speaker}-section`).classList.add('active');
+            });
+        });
+
+        // Category tab switching
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const huzur = this.dataset.huzur;
+                const category = this.dataset.category;
+                currentCategories[huzur] = category;
+                currentPages[huzur] = 1;
+                // Remove active class from all category tabs in section
+                this.closest('.category-tabs').querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                loadHuzurContent(huzur, category, 1, currentMediaTypes[huzur]);
+            });
+        });
+
+        // Media type tab switching
+        document.querySelectorAll('.media-type-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const huzur = this.dataset.huzur;
+                const mediaType = this.dataset.type;
+                currentMediaTypes[huzur] = mediaType;
+                currentPages[huzur] = 1;
+                // Remove active class from all media type tabs in section
+                this.closest('.media-type-tabs').querySelectorAll('.media-type-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                loadHuzurContent(huzur, currentCategories[huzur], 1, mediaType);
+            });
+        });
+
+        // Pause other audio when one plays (for direct audio elements)
+        document.addEventListener('play', function(e) {
+            if (e.target.tagName === 'AUDIO') {
+                handleMediaPlay(e.target);
+            }
+        }, true);
+    });
+    </script>
+</body>
+</html>
